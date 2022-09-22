@@ -30,7 +30,11 @@
                     <button class="btn btn-warning w-100">Edit</button>
                 </div>
                 <div class="col-6">
-                    <button class="btn btn-danger w-100">Delete</button>
+                    <form id="deleteForm" method="POST" action="{{ route('products.destroy', $product->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </form>
                 </div>
             </div>
         </div>

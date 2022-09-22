@@ -2,9 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Product;
 
-class ProductController extends Controller
+class ProductController
 {
-    //
+    public function index()
+    {
+        return view("products.index", ["products" => Product::all()]);
+    }
+
+    public function show(Product $product)
+    {
+        return view("products.show", ["product" => $product]);
+    }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return redirect()->to('/products');
+    }
 }

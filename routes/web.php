@@ -19,10 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products', function() {
-    return view("products", ["products" => Product::all()]);
-});
 
-Route::get("/product/{product}", function(Product $product){
-   return view("product", ["product" => $product]);
-});
+
+Route::resource('products', ProductController::class)
+    ->except(['create']);
+
+
