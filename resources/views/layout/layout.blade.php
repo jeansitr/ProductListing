@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="container">
-            <nav class="navbar navbar-light bg-light">
+            <nav class="navbar navbar-light bg-light attribute-box">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/">ProductListing</a>
                 </div>

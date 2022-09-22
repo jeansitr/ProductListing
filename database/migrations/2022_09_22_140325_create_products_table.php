@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string("title", 70)->unique();
-            $table->text("description");
-            $table->float("price")->unsigned();
-            $table->string("image");
-            $table->boolean("available")->default(false);
+            $table->string('title', 70)->unique();
+            $table->text('description');
+            $table->float('price')->unsigned();
+            $table->string('image');
+            $table->boolean('available')->default(false);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

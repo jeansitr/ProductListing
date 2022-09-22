@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $guarded = ["id", "created_at"];
+    protected $guarded = ['id', 'created_at'];
 
     use HasFactory;
 }
