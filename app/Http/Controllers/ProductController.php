@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
-use http\Env\Request;
 
 class ProductController
 {
@@ -20,7 +20,6 @@ class ProductController
     public function destroy(Product $product)
     {
         $product->delete();
-
         return redirect()->to('/products');
     }
 
@@ -29,33 +28,20 @@ class ProductController
         return view('products.edit', ['product' => $product]);
     }
 
-    public function create(){
-        return view("products.edit");
+    public function create()
+    {
+        return view("products.create");
     }
 
-    public function store(){
-        $product = new Product;
-
-        $product->title = request("title");
-        $product->description = request("description");
-        $product->price = request("price");
-        $product->image = "/image/product/" . str_replace(" ", "_", $product->title) . ".png";
-
-        $product->save();
-
-
+    public function store(StoreProductRequest $request)
+    {
+        Product::create($request->validated());
         return redirect("/products");
     }
 
-    public function update(Product $product){
-
-        $product->title = request("title");
-        $product->description = request("description");
-        $product->price = request("price");
-        $product->image = "/image/product/" . str_replace(" ", "_", $product->title) . ".png";
-
-        $product->save();
-
+    public function update(Product $product, StoreProductRequest $request)
+    {
+        $product->update($request->validated());
         return redirect("/products/$product->id");
     }
 }

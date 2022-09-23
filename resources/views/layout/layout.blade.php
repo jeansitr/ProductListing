@@ -13,7 +13,7 @@
         <div class="container">
             <nav class="navbar navbar-light bg-light attribute-box">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/">ProductListing</a>
+                    <a class="navbar-brand" href="/products">ProductListing</a>
                 </div>
             </nav>
 
