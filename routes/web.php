@@ -18,5 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('products', ProductController::class)
-    ->except(['create']);
+Route::resource('products', ProductController::class);

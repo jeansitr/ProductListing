@@ -7,5 +7,6 @@
         @empty
             <h1>No products found</h1>
         @endforelse
+        <li><a href="/products/create">Add product</a> </li>
     </ul>
 @endsection

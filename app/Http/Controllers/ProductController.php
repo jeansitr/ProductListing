@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use http\Env\Request;
 
 class ProductController
 {
@@ -26,5 +27,35 @@ class ProductController
     public function edit(Product $product)
     {
         return view('products.edit', ['product' => $product]);
+    }
+
+    public function create(){
+        return view("products.edit");
+    }
+
+    public function store(){
+        $product = new Product;
+
+        $product->title = request("title");
+        $product->description = request("description");
+        $product->price = request("price");
+        $product->image = "/image/product/" . str_replace(" ", "_", $product->title) . ".png";
+
+        $product->save();
+
+
+        return redirect("/products");
+    }
+
+    public function update(Product $product){
+
+        $product->title = request("title");
+        $product->description = request("description");
+        $product->price = request("price");
+        $product->image = "/image/product/" . str_replace(" ", "_", $product->title) . ".png";
+
+        $product->save();
+
+        return redirect("/products/$product->id");
     }
 }
