@@ -1,0 +1,34 @@
+.card-container{
+    height: 400px;
+}
+
+.img-container{
+    height: 80%;
+}
+
+span.card-title{
+    font-weight: bold;
+    font-size: 16pt;
+    color: black;
+}
+
+span.card-price{
+    color: black;
+    font-size: 14pt;
+}
+
+a.product-card:link {
+    text-decoration: none;
+}
+
+a.product-card:visited {
+    text-decoration: none;
+}
+
+a.product-card:hover {
+    text-decoration: none;
+}
+
+a.product-card:active {
+    text-decoration: none;
+}

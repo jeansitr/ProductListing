@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-4">
             <div id="img-container" class="h-100 w-100 d-flex">
-                <img class="product-image w-100 m-auto" src="{{$product->image}}">
+                @include("products._image")
             </div>
         </div>
         <div class="col-8">

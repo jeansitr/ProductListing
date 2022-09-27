@@ -18,6 +18,7 @@
             </nav>
 
             @yield("content")
+
         </div>
     </body>
 </html>

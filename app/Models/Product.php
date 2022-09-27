@@ -14,7 +14,7 @@ class Product extends Model
         parent::boot();
 
         static::saving(function (Product $product) {
-            $product->image = "/image/product/" . str($product->title)->replace(' ', '_')->lower() . ".png";
+            $product->image = '/image/product/'.str($product->title)->replace(' ', '_')->lower().'.png';
         });
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 
 class ProductController
@@ -20,6 +21,7 @@ class ProductController
     public function destroy(Product $product)
     {
         $product->delete();
+
         return redirect()->to('/products');
     }
 
@@ -30,18 +32,20 @@ class ProductController
 
     public function create()
     {
-        return view("products.create");
+        return view('products.create');
     }
 
     public function store(StoreProductRequest $request)
     {
         Product::create($request->validated());
-        return redirect("/products");
+
+        return redirect('/products');
     }
 
-    public function update(Product $product, StoreProductRequest $request)
+    public function update(Product $product, UpdateProductRequest $request)
     {
         $product->update($request->validated());
+
         return redirect("/products/$product->id");
     }
 }

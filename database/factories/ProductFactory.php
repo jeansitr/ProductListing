@@ -16,8 +16,14 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        $title = fake()->unique()->name();
+
         return [
-            //
+            'title' => $title,
+            'description' => fake()->text(),
+            'price' => fake()->randomFloat(2, 0.99, 10000),
+            'available' => fake()->boolean(),
+            'image' => $title,
         ];
     }
 }
