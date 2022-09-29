@@ -3,15 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\Product;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ProductViewTest extends TestCase
 {
-
-    use WithFaker, RefreshDatabase;
-
     /** @test */
     public function products_are_displayed_in_index()
     {

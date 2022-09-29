@@ -3,35 +3,33 @@
 namespace Tests\Feature;
 
 use App\Models\Product;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ProductsTest extends TestCase
 {
-    use WithFaker, RefreshDatabase;
-
     /** @test */
     public function a_product_can_be_added()
     {
-        $response = $this->post('/products', ['title' => 'This be new', 'description' => 'Still new desc', 'price' => 1225]);
+        $attributes = Product::factory()->raw(['title' => 'New product']);
+        $this->post('/products', $attributes)
+            ->assertRedirect('/products');
 
-        $response->assertStatus(302);
-
-        self::assertEquals(1, Product::where('title', 'This be new')->get()->count());
+        $this->assertDatabaseHas('products', ['title' => 'New product']);
     }
+
 
     /** @test */
     public function error_when_missing_values_post()
     {
+        $product = Product::factory()->raw(['title' => '']);
 
-        $response = $this->post('/products', ['title' => '', 'description' => 'Still new desc', 'price' => 1225]);
+        $response = $this->post('/products', $product);
 
         $response->assertSessionHasErrors("title");
         $response->assertStatus(302);
     }
 
-    /** @test */
+    /** @ignore */
     public function a_product_can_be_edited_and_update_at_changes()
     {
         //$this->withoutExceptionHandling();
@@ -53,9 +51,9 @@ class ProductsTest extends TestCase
 
     /** @test */
     public function error_when_missing_values_put(){
-        $product = Product::factory()->create(['title' => 'This be new', 'description' => 'Still new desc', 'price' => 1234]);
+        $product = Product::factory()->create(['title' => 'This be new']);
 
-        $response = $this->put('/products/'.$product->id, ['title' => '', 'description' => 'Still new desc', 'price' => 1225]);
+        $response = $this->put('/products/'.$product->id, ['title' => '']);
 
         $response->assertSessionHasErrors("title");
         $response->assertStatus(302);
@@ -69,6 +67,7 @@ class ProductsTest extends TestCase
         $response = $this->delete("/products/$product->id");
 
         $response->assertStatus(302);
-        self::assertNull(Product::find($product->id));
+
+        $this->assertDatabaseMissing('products', ['id' => $product->id]);
     }
 }
