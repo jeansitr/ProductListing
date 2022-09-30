@@ -9,7 +9,7 @@
             <div class="row">
         @endif
 
-            @include("products._card", ["class" => "col-" . (12/$PRODUCTPERROW), "product" => $product])
+            @include("products._card", ["class" => "col-" . (12/$PRODUCTPERROW), "product" => $product, "showSeller" => true])
 
         @if(!$loop->first && ($loop->index + 1) % $PRODUCTPERROW == 0)
             </div>

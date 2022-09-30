@@ -17,7 +17,6 @@ class ProductsTest extends TestCase
         $this->assertDatabaseHas('products', ['title' => 'New product']);
     }
 
-
     /** @test */
     public function error_when_missing_values_post()
     {
@@ -25,7 +24,7 @@ class ProductsTest extends TestCase
 
         $response = $this->post('/products', $product);
 
-        $response->assertSessionHasErrors("title");
+        $response->assertSessionHasErrors('title');
         $response->assertStatus(302);
     }
 
@@ -50,12 +49,13 @@ class ProductsTest extends TestCase
     }
 
     /** @test */
-    public function error_when_missing_values_put(){
+    public function error_when_missing_values_put()
+    {
         $product = Product::factory()->create(['title' => 'This be new']);
 
         $response = $this->put('/products/'.$product->id, ['title' => '']);
 
-        $response->assertSessionHasErrors("title");
+        $response->assertSessionHasErrors('title');
         $response->assertStatus(302);
     }
 

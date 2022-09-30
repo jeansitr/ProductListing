@@ -10,7 +10,7 @@ class ProductController
 {
     public function index()
     {
-        return view('products.index', ['products' => Product::all()]);
+        return view('products.index', ['products' => Product::with('seller')->get()]);
     }
 
     public function show(Product $product)

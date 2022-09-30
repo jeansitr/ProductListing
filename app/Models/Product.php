@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use HasFactory;
+
     protected $guarded = ['id', 'created_at'];
 
     public static function boot()
@@ -18,5 +20,8 @@ class Product extends Model
         });
     }
 
-    use HasFactory;
+    public function seller()
+    {
+        return $this->belongsTo(Seller::class);
+    }
 }

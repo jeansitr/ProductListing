@@ -1,28 +1,7 @@
 @extends("layout/layout")
 
 @section("content")
-    <div class="row">
-        <div class="col-4">
-            <div id="img-container" class="h-100 w-100 d-flex">
-                @include("products._image")
-            </div>
-        </div>
-        <div class="col-8">
-            <div class="col-12">
-                {{$product->title}}
-            </div>
-            <div class="col-12">
-                {{$product->price}} $
-            </div>
-            <div class="col-12">
-                <label>available: {{$product->available ? "yes" : "no"}}</label>
-            </div>
-            <div class="col-12">
-                {{$product->description}}
-            </div>
-
-        </div>
-    </div>
+    @include("shared._profile", ["item" => $product])
     <div class="row">
         <div class="col-8 ms-auto">
             <div class="row">

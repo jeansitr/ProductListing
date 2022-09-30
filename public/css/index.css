@@ -12,8 +12,8 @@ span.card-title{
     color: black;
 }
 
-span.card-price{
-    color: black;
+.card-detail{
+    color: #000000;
     font-size: 14pt;
 }
 

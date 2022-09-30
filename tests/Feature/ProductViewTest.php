@@ -15,7 +15,7 @@ class ProductViewTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSeeText($products[rand(0, $products->count() - 1)]->title);
-        self::assertEquals($response->viewData("products")->count(), $products->count());
+        self::assertEquals($response->viewData('products')->count(), $products->count());
     }
 
     /** @test */
@@ -24,7 +24,7 @@ class ProductViewTest extends TestCase
         $response = $this->get('/products');
 
         $response->assertStatus(200);
-        $response->assertSee("No products found");
+        $response->assertSee('No products found');
     }
 
     /** @test */
