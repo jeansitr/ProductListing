@@ -22,6 +22,6 @@ class SellerController extends Controller
      S*/
     public function show($id)
     {
-        return view('sellers/show', ['seller' => Seller::with('products')->get()->where('id', $id)->first()]);
+        return view('sellers/show', ['seller' => Seller::with('products')->where('id', $id)->get()->first()]);
     }
 }
