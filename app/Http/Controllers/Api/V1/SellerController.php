@@ -14,7 +14,7 @@ class SellerController extends Controller
      */
     public function index()
     {
-        return response()->json(Seller::with('products')->get()->toArray());
+        return response()->json(Seller::with('products')->get());
     }
 
     /**
@@ -23,8 +23,8 @@ class SellerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function show(Seller $seller)
     {
-        return response()->json(Seller::with('products')->where('id', $id)->get()->toArray());
+        return response()->json($seller);
     }
 }

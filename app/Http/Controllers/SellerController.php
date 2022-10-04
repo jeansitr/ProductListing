@@ -20,8 +20,8 @@ class SellerController extends Controller
      * @param  int  $id
 
      S*/
-    public function show($id)
+    public function show(Seller $seller)
     {
-        return view('sellers/show', ['seller' => Seller::with('products')->where('id', $id)->get()->first()]);
+        return view('sellers/show', [ "seller" => $seller]);
     }
 }
