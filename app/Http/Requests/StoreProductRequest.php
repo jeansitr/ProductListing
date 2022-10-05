@@ -27,6 +27,7 @@ class StoreProductRequest extends FormRequest
             'title' => ['required', 'unique:products'],
             'description' => 'required',
             'price' => ['integer', 'min:0', 'max:2000'],
+            'seller_id' => ['integer']
         ];
     }
 }

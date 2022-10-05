@@ -11,7 +11,11 @@ class ProductsTest extends TestCase
     /** @test */
     public function a_product_can_be_added()
     {
-        $attributes = Product::factory()->make(['title' => 'New product'])->toArray();
+        # Voir ça pour les relations dans les factories https://laravel.com/docs/9.x/eloquent-factories#factory-relationships
+        $attributes = Product::factory()
+            ->for(Seller::factory())
+            ->raw(['title' => 'New product']);
+
         $this->post('/products', $attributes)
             ->assertRedirect('/products');
 
