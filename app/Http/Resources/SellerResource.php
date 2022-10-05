@@ -15,12 +15,12 @@ class SellerResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "name" => $this->name,
-            "email" => $this->email,
-            "phone" => $this->phone,
-            "products" => [
+            'name' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'products' => [
 
-            ]
+            ],
         ];
     }
 }

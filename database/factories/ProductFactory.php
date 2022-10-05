@@ -18,16 +18,14 @@ class ProductFactory extends Factory
     public function definition()
     {
         $title = fake()->unique()->name();
+
         return [
             'title' => $title,
             'description' => fake()->text(),
             'price' => rand(0, 2000),
             'available' => fake()->boolean(),
             'image' => $title,
-            'seller_id' => Seller::factory()
+            'seller_id' => Seller::factory(),
         ];
-
-
-        return Theme::button(['class' => ])
     }
 }

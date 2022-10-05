@@ -11,7 +11,7 @@ class ProductsTest extends TestCase
     /** @test */
     public function a_product_can_be_added()
     {
-        # Voir ça pour les relations dans les factories https://laravel.com/docs/9.x/eloquent-factories#factory-relationships
+        // Voir ça pour les relations dans les factories https://laravel.com/docs/9.x/eloquent-factories#factory-relationships
         $attributes = Product::factory()
             ->for(Seller::factory())
             ->raw(['title' => 'New product']);
@@ -25,7 +25,9 @@ class ProductsTest extends TestCase
     /** @test */
     public function error_when_missing_values_post()
     {
-        $product = Product::factory()->raw(['title' => '']);
+        $product = Product::factory()
+            ->for(Seller::factory())
+            ->raw(['title' => '']);
 
         $response = $this->post('/products', $product);
 

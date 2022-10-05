@@ -1,7 +1,6 @@
-@extends("layout.layout")
+@extends("layouts.layout")
 
 @section("content")
-
 
     @include('shared._errors')
 

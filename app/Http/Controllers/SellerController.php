@@ -22,6 +22,6 @@ class SellerController extends Controller
      S*/
     public function show(Seller $seller)
     {
-        return view('sellers/show', [ "seller" => $seller]);
+        return view('sellers/show', ['seller' => $seller]);
     }
 }
