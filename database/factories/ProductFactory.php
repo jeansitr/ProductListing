@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
+use App\Models\Seller;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,13 +19,14 @@ class ProductFactory extends Factory
     public function definition()
     {
         $title = fake()->unique()->name();
-
+        $seller = Seller::factory()->create();
         return [
             'title' => $title,
             'description' => fake()->text(),
             'price' => rand(0, 2000),
             'available' => fake()->boolean(),
             'image' => $title,
+            'seller_id' => $seller->id
         ];
     }
 }

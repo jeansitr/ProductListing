@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('sellers', function (Blueprint $table) {
-            $table->string('image')->nullable();
+        Schema::table("products", function(Blueprint $table){
+            $table->bigInteger('seller_id')->unsigned()->nullable(false)->change();
         });
     }
 
@@ -25,8 +25,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('sellers', function (Blueprint $table) {
-            $table->dropColumn('image');
-        });
+        //
     }
 };

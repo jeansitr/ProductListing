@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
+        //Schema::disableForeignKeyConstraints();
         Schema::table('products', function (Blueprint $table) {
-            $table->foreignId('seller_id')->references('id')->on('sellers');
+            //$table->bigInteger("seller_id")->unsigned()->nullable(true);
+            $table->foreignId('seller_id')->nullable(true)->references('id')->on('sellers');
         });
     }
 

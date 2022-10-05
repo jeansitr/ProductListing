@@ -25,6 +25,7 @@ class SellerFactory extends Factory
         ];
     }
 
+    /*
     public function configure()
     {
         return $this->afterMaking(function (Seller $seller) {
@@ -33,4 +34,5 @@ class SellerFactory extends Factory
             Product::factory(5)->create(['seller_id' => $seller->id]);
         });
     }
+    */
 }

@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Product;
+use App\Models\Seller;
 use Tests\TestCase;
 
 class ProductsTest extends TestCase
@@ -10,7 +11,7 @@ class ProductsTest extends TestCase
     /** @test */
     public function a_product_can_be_added()
     {
-        $attributes = Product::factory()->raw(['title' => 'New product']);
+        $attributes = Product::factory()->make(['title' => 'New product'])->toArray();
         $this->post('/products', $attributes)
             ->assertRedirect('/products');
 
