@@ -27,6 +27,8 @@ class UpdateProductRequest extends FormRequest
             'title' => ['required', 'unique:products,title,'.$this->product->id],
             'description' => 'required',
             'price' => ['integer', 'min:0', 'max:2000'],
+            'seller_id' => ['integer'],
+            'user_id' => ['integer'],
         ];
     }
 }

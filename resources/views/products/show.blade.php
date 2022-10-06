@@ -1,9 +1,10 @@
-@extends("layout/layout")
+@extends("layouts/layout")
 
 @section("content")
     @include("shared._profile", ["item" => $product])
     <div class="row">
         <div class="col-8 ms-auto">
+            @can(['update', 'delete'], $product)
             <div class="row">
                 <div class="col-6">
                     <a href="{{ route("products.edit", $product->id) }}" class="btn btn-warning w-100">Edit</a>
@@ -16,6 +17,7 @@
                     </form>
                 </div>
             </div>
+            @endcan
         </div>
     </div>
 @endsection

@@ -17,5 +17,6 @@ $PRODUCTPERROW = 4;
     @empty
         <h1>No products found</h1>
     @endforelse
-    <a href="/products/create" class="btn btn-success mb-3">Add product</a>
+
+    <a href="/products/create" class="btn btn-success my-3">Add product</a>
 @endsection

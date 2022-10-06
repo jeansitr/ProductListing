@@ -20,11 +20,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('products', ProductController::class)->middleware(['auth']);
-Route::resource('sellers', SellerController::class,
-    [
-        'only' => ['show', 'index'],
-    ]);
+Route::middleware(['auth'])->group(function () {
+    route::get('home', function () {
+        return view('home');
+    });
+});
+
+Route::resource('products', ProductController::class);
+
+Route::resource('sellers', SellerController::class);
 
 Fortify::loginView(function () {
     return view('auth.login');
@@ -35,9 +39,9 @@ Fortify::registerView(function () {
 });
 
 Fortify::requestPasswordResetLinkView(function () {
-    return view('auth.forgot-password');
+    return view('auth.passwords.email');
 });
 
 Fortify::resetPasswordView(function () {
-    return view('auth.reset-password');
+    return view('auth.passwords.reset');
 });

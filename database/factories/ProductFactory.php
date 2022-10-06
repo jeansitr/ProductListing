@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Seller;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,6 +27,7 @@ class ProductFactory extends Factory
             'available' => fake()->boolean(),
             'image' => $title,
             'seller_id' => Seller::factory(),
+            'user_id' => User::factory(),
         ];
     }
 }

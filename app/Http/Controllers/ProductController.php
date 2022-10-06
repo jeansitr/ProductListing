@@ -6,8 +6,13 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 
-class ProductController
+class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['show', 'index']);
+    }
+
     public function index()
     {
         return view('products.index', ['products' => Product::with('seller')->get()]);
@@ -37,7 +42,12 @@ class ProductController
 
     public function store(StoreProductRequest $request)
     {
-        Product::create($request->validated());
+        $seller = [];
+        if (! $request->seller_id) {
+            $seller = ['seller_id' => auth()->user()->id];
+        }
+
+        auth()->user()->products()->create($request->validated() + $seller);
 
         return redirect('/products');
     }
